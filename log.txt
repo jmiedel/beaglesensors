@@ -1,0 +1,2 @@
+type,reading,time
+temp,83.20,time

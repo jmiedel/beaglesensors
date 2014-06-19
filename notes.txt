@@ -1,0 +1,1 @@
+tmp36 temperature sensor claims .1 degree precision and range from -40c tp 150c
