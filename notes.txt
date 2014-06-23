@@ -1,1 +1,6 @@
 tmp36 temperature sensor claims .1 degree precision and range from -40c tp 150c
+copy folder in /home
+inside the folder copy sensors.sh in /etc/init.d
+into terminal type
+chmod 755 /etc/init.d/sensors.sh
+update-rc.d /etc/init.d/sensors.sh defaults
