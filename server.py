@@ -43,7 +43,8 @@ class Sensor:
         self.freq = freq
     
     def run():
-        self.runnable.run()
+		print "running abstract class"
+        return 
 
 def initSensor(type):
 	if (type == "tmp36"):
@@ -69,7 +70,9 @@ if __name__ == '__main__':
     #read in sensor config
     sensors = readConf()
     for s in sensors:
-        thread = threading.Thread(target=polling)
+        thread = threading.Thread(target=s.run)
+		thread.daemon = true
+		thread.start()
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
