@@ -53,8 +53,12 @@ def readConf():
 	f = open("conf.txt")
 	line = f.readline()
 	properties = line.split(",")
+	propDict = {}
 	for p in properties:
 		(key,value) = p.split(":")
+		propDict[key] = value
+	print propDict
+	return propDict
 		
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer
