@@ -2,7 +2,10 @@ import Adafruit_BBIO.GPIO as GPIO
 import Adafruit_BBIO.ADC as ADC
 import time
 import os
+
 class tmp36:
+    def __init__(props):
+        this.log = props["name"]+.txt
 	def run():
 		LOG = "log.txt"
 		ADC.setup()
@@ -14,7 +17,7 @@ class tmp36:
 			mV = raw * 1800.0 #1.8V reference
 			tempC = (mV-500)/10
 			tempF = (tempC*9/5)+32
-			f = open(LOG,"r+w")
+			f = open(LOG,"a+")
 			#seeks to end of file
 			f.seek(0,2)
 			#write time stamps with 2 decs of accuracy

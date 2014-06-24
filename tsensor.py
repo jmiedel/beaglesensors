@@ -12,7 +12,7 @@ while(True):
     mV = raw * 1800.0 #1.8V reference
     tempC = (mV-500)/10
     tempF = (tempC*9/5)+32
-    f = open(LOG,"r+w")
+    f = open(LOG,"a+")
     #seeks to end of file
     f.seek(0,2)
     #write time stamps with 2 decs of accuracy

@@ -36,11 +36,8 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
 class Sensor:
     #manages polling and logging a single sensor
-    def __init__(self,type,logfile,freq):
-        self.type = type
-        self.runnable = getRunnable(type)
-        self.logfile = logfile
-        self.freq = freq
+    def __init__(self):
+        print "running abstract class"
     
     def run():
         print "running abstract class"
@@ -48,7 +45,7 @@ class Sensor:
 
 def initSensor(props):
     if (type == "tmp36"):
-        return tmp36()
+        return tmp36(props)
     if (type == "hih4000"):
         return hih4000()
 
