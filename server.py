@@ -44,7 +44,7 @@ class Sensor:
         print "running abstract class"
         return 
 
-def initSensor(type):
+def initSensor(props):
     if (type == "tmp36"):
         return tmp36()
     if (type == "hih4000"):
@@ -54,12 +54,13 @@ def readConf():
     f = open("conf.txt")
     line = f.readline()
     properties = line.split(",")
-    propDict = {}
+    sensors = []
     for p in properties:
+        propDict = {}
         (key,value) = p.split(":")
         propDict[key] = value
-    print propDict
-    return propDict
+        sensors += initSensor(propDict)
+    return sensors
         
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer
