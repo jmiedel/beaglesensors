@@ -1,6 +1,7 @@
 import time
 import os
 import BaseHTTPServer
+import tmp36
 
 HOST_NAME = '' # !!!REMEMBER TO CHANGE THIS!!!
 PORT_NUMBER = 1234 # Maybe set this to 9000.
@@ -31,10 +32,32 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         s.wfile.write("<p>lastLine: %s</p>" % lastLine)
         s.wfile.write("</body></html>")
 
+class Sensor:
+    #manages polling and logging a single sensor
+    def __init__(self,type,logfile,freq):
+        self.type = type
+        self.runnable = getRunnable(type)
+        self.logfile = logfile
+        self.freq = freq
+    def getRunnable(type):
+        switch(type) {
+            case "tmp36":
+                return tmp36()
+            case "hih4000":
+                return hih4000()
+        }
+    def run():
+        self.runnable.run()
+        
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer
     httpd = server_class((HOST_NAME, PORT_NUMBER), MyHandler)
     print time.asctime(), "Server Starts - %s:%s" % (HOST_NAME, PORT_NUMBER)
+    #read in sensor config
+    demo = {
+    sensors = [demo]
+    for s in sensors:
+        thread = threading.Thread(target=polling)
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
