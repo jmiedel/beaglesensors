@@ -41,26 +41,26 @@ class Sensor:
         self.freq = freq
     
     def run():
-		print "running abstract class"
+        print "running abstract class"
         return 
 
 def initSensor(type):
-	if (type == "tmp36"):
-		return tmp36()
-	if (type == "hih4000"):
-		return hih4000()
+    if (type == "tmp36"):
+        return tmp36()
+    if (type == "hih4000"):
+        return hih4000()
 
 def readConf():
-	f = open("conf.txt")
-	line = f.readline()
-	properties = line.split(",")
-	propDict = {}
-	for p in properties:
-		(key,value) = p.split(":")
-		propDict[key] = value
-	print propDict
-	return propDict
-		
+    f = open("conf.txt")
+    line = f.readline()
+    properties = line.split(",")
+    propDict = {}
+    for p in properties:
+        (key,value) = p.split(":")
+        propDict[key] = value
+    print propDict
+    return propDict
+        
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer
     httpd = server_class((HOST_NAME, PORT_NUMBER), MyHandler)
@@ -69,8 +69,8 @@ if __name__ == '__main__':
     sensors = readConf()
     for s in sensors:
         thread = threading.Thread(target=s.run)
-		thread.daemon = true
-		thread.start()
+        thread.daemon = true
+        thread.start()
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
