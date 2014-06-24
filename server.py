@@ -39,23 +39,29 @@ class Sensor:
         self.runnable = getRunnable(type)
         self.logfile = logfile
         self.freq = freq
-    def getRunnable(type):
-        switch(type) {
-            case "tmp36":
-                return tmp36()
-            case "hih4000":
-                return hih4000()
-        }
+    
     def run():
         self.runnable.run()
-        
+
+def initSensor(type):
+	if (type == "tmp36"):
+		return tmp36()
+	if (type == "hih4000"):
+		return hih4000()
+
+def readConf():
+	f = open("conf.txt")
+	line = f.readline()
+	properties = line.split(",")
+	for p in properties:
+		(key,value) = p.split(":")
+		
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer
     httpd = server_class((HOST_NAME, PORT_NUMBER), MyHandler)
     print time.asctime(), "Server Starts - %s:%s" % (HOST_NAME, PORT_NUMBER)
     #read in sensor config
-    demo = {
-    sensors = [demo]
+    sensors = readConf()
     for s in sensors:
         thread = threading.Thread(target=polling)
     try:

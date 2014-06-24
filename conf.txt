@@ -1,0 +1,1 @@
+name:sensor1,type:tmp36,pin:40
