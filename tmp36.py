@@ -5,14 +5,13 @@ import os
 
 class tmp36:
     def __init__(props):
-        this.log = props["name"]+.txt
+        this.log = props["name"]+".txt"
+	    dir = os.path.dirname(__file__)
+	    this.log = os.path.join(dir,this.log)
 	def run():
-		LOG = "log.txt"
 		ADC.setup()
-		dir = os.path.dirname(__file__)
-		LOG = os.path.join(dir,LOG)
 		while(True):
-			time.sleep(1)
+        	time.sleep(1)
 			raw = ADC.read("P9_40")
 			mV = raw * 1800.0 #1.8V reference
 			tempC = (mV-500)/10
