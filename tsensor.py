@@ -8,7 +8,7 @@ dir = os.path.dirname(__file__)
 LOG = os.path.join(dir,LOG)
 while(True):
     time.sleep(1)
-    raw = ADC.read("P9_40")
+    raw = ADC.read("P9_36")
     mV = raw * 1800.0 #1.8V reference
     tempC = (mV-500)/10
     tempF = (tempC*9/5)+32

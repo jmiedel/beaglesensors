@@ -12,8 +12,6 @@
 # Carry out specific functions when asked to by the system
 case "$1" in
   start)
-    echo "Starting sensors "
-    python /home/beaglesensors/tmp36.py &
     echo "Starting server "
     python /home/beaglesensors/server.py &
     # example 1 - system service
@@ -27,8 +25,6 @@ case "$1" in
     echo "Stopping server"
     pid=`ps guax | grep server.py | grep -v grep | awk '{print $2}'`
     kill $pid
-    pid=`ps guax | grep tmp36.py | grep -v grep | awk '{print $2}'`
-	kill $pid
     # example 1
     # /usr/bin/foobar --config /etc/foo.conf stop
 

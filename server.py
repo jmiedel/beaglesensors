@@ -8,9 +8,6 @@ import hih4000
 
 HOST_NAME = '' #asdf
 PORT_NUMBER = 1234 # Maybe set this to 9000.
-LOG = "log.txt"
-dir = os.path.dirname(__file__)
-LOG = os.path.join(dir,LOG)
 
 class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     #has a sensors variable taht is a list of all connected sensors
@@ -38,6 +35,11 @@ class Sensor:
         print "running abstract class"
         return 
 
+def getAbsPath(relPath):
+    dir = os.path.dirname(__file__)
+    absPath = os.path.join(dir,relPath)
+    return absPath
+
 def initSensor(props):
     type = props["type"]
     if (type == "tmp36"):
@@ -48,7 +50,7 @@ def initSensor(props):
 
 #makes a series of sensor objcts based on config file
 def readConf():
-    f = open("conf.txt")
+    f = open(getAbsPath("conf.txt"))
     lines = f.readlines()
     sensors = []
     for line in lines:
