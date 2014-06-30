@@ -1,22 +1,23 @@
-import Adafruit_BBIO.GPIO as GPIO
 import Adafruit_BBIO.ADC as ADC
 import time
 import os
 
 class tmp36:
-    def __init__(props):
-        this.log = props["name"]+".txt"
+    def __init__(self,props):
+        self.name = props["name"]
+        self.pin = props["pin"]
+        self.log = self.name+".txt"
         dir = os.path.dirname(__file__)
-        this.log = os.path.join(dir,this.log)
-    def run():
+        self.log = os.path.join(dir,self.log)
+    def run(self):
         ADC.setup()
         while(True):
             time.sleep(1)
-            raw = ADC.read("P9_40")
+            raw = ADC.read("P9_"+self.pin)
             mV = raw * 1800.0 #1.8V reference
             tempC = (mV-500)/10
             tempF = (tempC*9/5)+32
-            f = open(LOG,"a+")
+            f = open(self.log,"a+")
             #seeks to end of file
             f.seek(0,2)
             #write time stamps with 2 decs of accuracy
