@@ -2,7 +2,6 @@ import Adafruit_BBIO.ADC as ADC
 import time
 import os
 
-import server
 class tmp36:
     def __init__(self,props):
         self.name = props["name"]
@@ -15,9 +14,7 @@ class tmp36:
         while(True):
             time.sleep(1)
             raw = ADC.read("P9_"+self.pin)
-            mV = raw * 1800.0 #1.8V reference
-            tempC = (mV-500)/10
-            tempF = (tempC*9/5)+32
+            tempF = rawToF(raw)
             f = open(self.log,"a+")
             #seeks to end of file
             f.seek(0,2)
@@ -25,3 +22,9 @@ class tmp36:
             f.write("temp,%.3f,%.2f\n"% (tempF,time.time()))
             print("mv:%d C:%.3f F:%.3f" % (mV,tempC,tempF))
         print "shouldnt be here"
+
+def rawToF(raw):
+    mV = raw * 1800.0 #1.8V reference
+    tempC = (mV-500)/10
+    tempF = (tempC*9/5)+32
+    return tempF
