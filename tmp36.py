@@ -2,7 +2,6 @@ import Adafruit_BBIO.ADC as ADC
 import time
 import os
 
-import server
 class tmp36:
     def __init__(self,props):
         self.name = props["name"]

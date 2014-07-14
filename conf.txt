@@ -1,2 +1,2 @@
-name:sensor1,type:tmp36,pin:38
+name:sensor1,type:tmp36,pin:36
 name:sensor2,type:hih4000,pin:39
