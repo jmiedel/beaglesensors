@@ -10,7 +10,7 @@ HOST_NAME = '' #asdf
 PORT_NUMBER = 1234 # Maybe set this to 9000.
 
 class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
-    #has a sensors variable taht is a list of all connected sensors
+    #has a sensors variable that is a list of all connected sensors
     def do_HEAD(s):
         s.send_response(200)
         s.send_header("Content-type", "text/html")
@@ -65,6 +65,7 @@ def readConf():
     return sensors
 
 def readLastLine(log):
+    print "readLastLine"
     logSize = os.path.getsize(log)
     f = open(log)
     #should be adjusted to ensure we are getting last line
