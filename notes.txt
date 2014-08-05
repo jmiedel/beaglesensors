@@ -1,4 +1,14 @@
 tmp36 temperature sensor claims .1 degree precision and range from -40c tp 150c
+in the bottom left click icon
+go to internet->Wicd Network Manager
+in the upper right of the window click the down arrow
+go to preferences
+in wireless interface type 
+click ok
+click refresh
+on the network you want (probably hilltop) check automatically connect
+and click connect
+
 copy folder in /home
 inside the folder copy sensors.sh in /etc/init.d
 into terminal type
