@@ -12,7 +12,7 @@ class tmp36:
     def run(self):
         ADC.setup()
         while(True):
-            time.sleep(1)
+            time.sleep(60)
             raw = ADC.read("P9_"+self.pin)
             tempF = rawToF(raw)
             f = open(self.log,"a+")

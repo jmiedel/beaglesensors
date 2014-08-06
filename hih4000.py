@@ -12,7 +12,7 @@ class hih4000:
     def run(self):
         ADC.setup()
         while(True):
-            time.sleep(1)
+            time.sleep(60)
             pin = "P9_"+str(self.pin)
             raw = ADC.read(pin)
             mV = raw * 1800.0 #1.8V reference
